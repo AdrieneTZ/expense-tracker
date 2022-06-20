@@ -4,6 +4,8 @@ const router = express.Router()
 // import user model
 const User = require('../../models/user')
 
+const bcrypt = require('bcryptjs')
+
 // route: GET/ users/ register
 router.get('/register', (req, res) => {
   return res.render('register')
@@ -42,7 +44,9 @@ router.post('/register', (req, res) => {
         errors.push({ message: 'This email has been registered!' })
         return res.render('register', { errors, name, email, password, confirmPassword })
       }
-      User.create({ name, email, password })
+      return bcrypt.genSalt(10)
+        .then(salt => bcrypt.hash(password, salt))
+        .then(hash => User.create({ name, email, password: hash }))
         .then(() => res.redirect('/'))
         .catch(error => console.log(error))
     })
