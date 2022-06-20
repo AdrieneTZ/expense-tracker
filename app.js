@@ -5,6 +5,8 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
 
+const routes = require('./routes')
+
 require('./config/mongoose')
 
 const app = express()
@@ -15,6 +17,7 @@ app.set('view engine', 'hbs')
 app.set('views', './views')
 
 
+app.use(routes)
 app.listen(PORT, () => {
   console.log(`App is running on http://localhost:${PORT}.`)
 })
