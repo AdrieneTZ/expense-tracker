@@ -15,7 +15,12 @@
   <header>
     <nav class="navbar bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Expense Tracker</a>
+        <a class="navbar-brand" href="/">Expense Tracker</a>
+        {{#if isAuthenticated}}
+        <a class='btn btn-outline-light' href='/users/logout'>Logout</a>
+        {{else}}
+        <a class='btn btn-outline-light' href='/users/login' style="background-color: #274b47;">Login</a>
+        {{/if}}
       </div>
     </nav>
   </header>
