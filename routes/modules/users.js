@@ -59,6 +59,8 @@ router.get('/login', (req, res) => {
 })
 
 // route: POST/ users/ login
+// add middleware to authenticate login request status
+// this middleware is in app.js
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/users/login',
