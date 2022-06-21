@@ -1,0 +1,49 @@
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card">
+
+      {{!-- card header --}}
+      <div class="card-header">
+        <h4>Create an expense record</h4>
+      </div>
+
+      {{!-- card body: form --}}
+      <div class="card-body mt-3">
+        <p>* is required field</p>
+        <form method="POST" action="/records/new">
+          {{!-- name --}}
+          <div class="form-group d-flex mt-3">
+            <label for="name">Name*</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" required value="{{ name }}">
+          </div>
+          {{!-- date --}}
+          <div class="form-group d-flex mt-3">
+            <label for="date" class="mr-2">Date*</label>
+            <input type="date" id="date" name="date" class="form-control" required value="{{ date }}">
+          </div>
+          {{!-- category --}}
+          <div class="form-group d-flex mt-3">
+            <label for="category" class="form-label">Category*</label>
+            <select class="form-select"  name="category" id="category" required>
+              <option>家居物業</option>
+              <option>交通出行</option>
+              <option>休閒娛樂</option>
+              <option>餐飲食品</option>
+              <option>其他</option>
+            </select>
+          </div>
+          {{!-- amount --}}
+          <div class="form-group d-flex mt-3">
+            <label for="amount">Amount*</label>
+            <input type="number" id="amount" name="amount" class="form-control" placeholder="2000" required value="{{ amount }}">
+          </div>
+          {{!-- submit button --}}
+          <div class="d-grid gap-2 mt-3">
+            <button class="btn btn-block mx-1" type="submit" style="background-color: #5b7148; color: #eef8ed;">Create This Expense</button>
+          </div>
+        </form>
+      </div>
+      {{!-- card body end --}}
+    </div>
+  </div>
+</div>
