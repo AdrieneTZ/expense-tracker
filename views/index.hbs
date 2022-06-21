@@ -1,3 +1,57 @@
-<h3>Home Page</h3>
+<div class="row mt-5">
+  <div class="col-md-6 m-auto">
+    <div class="card">
 
-<h1>{{ userId }}</h1>
+      {{!-- card header --}}
+      <div class="card-header">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="expense-category" data-bs-toggle="dropdown" aria-expanded="false">
+            Expense Category
+          </button>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="expense-category">
+            <li><a class="dropdown-item" href="#">家居物業</a></li>
+            <li><a class="dropdown-item" href="#">交通出行</a></li>
+            <li><a class="dropdown-item" href="#">休閒娛樂</a></li>
+            <li><a class="dropdown-item" href="#">餐飲食品</a></li>
+            <li><a class="dropdown-item" href="#">其他</a></li>
+          </ul>
+        </div>
+      </div>
+      {{!-- card header end --}}
+
+      {{!-- card body --}}
+      <div class="card-body mt-3">
+        <div class="total-expense d-flex row">
+          <div>Amount:</div>
+          <p>10000</p>
+        </div>
+        <div class="expenses">
+          <ul class="list-group d-flex row ">
+            <li class="list-group-item d-flex">
+              <div class="d-flex col mx-1">
+                <i class="m-1">icon</i>
+                <div class="m-1">
+                  <p>name</p>
+                  <p>date</p>
+                </div>
+                <p class="ms-auto">amount</p>
+              </div>
+              <div class="buttons mx-1">
+                <button class="btn btn-primary">Edit</button>
+                <button class="btn btn-danger">Delete</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      {{!-- card body end --}}
+
+      {{!-- card footer --}}
+      <div class="card-footer">
+        <a href="" class="btn btn-info btn-block">Add An Expense</a>
+      </div>
+      {{!-- card footer and --}}
+    </div>
+  </div>
+</div>
