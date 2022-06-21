@@ -63,7 +63,16 @@ router.get('/login', (req, res) => {
 // this middleware is in app.js
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
+  successMessage: '',
   failureRedirect: '/users/login',
 }))
+
+// route: GET/ users/ logout
+router.get('/logout', (req, res, next) => {
+  req.logout(() => {
+    req.flash('success_msg', 'You have logged out successfully!')
+    res.redirect('/users/login')
+  })
+})
 
 module.exports = router
