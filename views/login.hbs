@@ -1,10 +1,10 @@
 <div class="row mt-5">
   <div class="col-md-6 m-auto">
+    {{> message }}
     <div class="card">
       <img src="https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2338&q=80" class="card-img-top" alt="...">
       <div class="card-body mt-3">
         <h5 class="card-title">Login</h5>
-        {{> message }}
         <form method="POST" action="/users/login">
           <div class="form-group mt-3">
             <label for="email">Email</label>
