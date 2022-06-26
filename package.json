@@ -7,7 +7,8 @@
     "stsrt": "node app.js",
     "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "genCat": "node models/seeds/generateCategories.js"
+    "genCat": "node models/seeds/generateCategories.js",
+    "genUser": "node models/seeds/generateUsers.js"
   },
   "author": "",
   "license": "ISC",
