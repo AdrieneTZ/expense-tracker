@@ -22,25 +22,27 @@
       {{!-- card body --}}
       <div class="card-body mt-3">
         <div class="total-expense d-flex row">
-          <div>Amount:</div>
+          <div>Total Amount：</div>
           <p>10000</p>
         </div>
         <div class="expenses">
           <ul class="list-group d-flex row ">
+            {{#each records}}
             <li class="list-group-item d-flex">
               <div class="d-flex col mx-1">
                 <i class="m-1">icon</i>
                 <div class="m-1">
-                  <p>name</p>
-                  <p>date</p>
+                  <p>{{this.name}}</p>
+                  <p>{{this.date}}</p>
                 </div>
-                <p class="ms-auto">amount</p>
+                <p class="ms-auto">{{this.amount}}</p>
               </div>
               <div class="buttons mx-1">
-                <button class="btn btn-primary">Edit</button>
+                <a class="btn btn-primary" href="./records/{{this._id}}/edit">Edit</a>
                 <button class="btn btn-danger">Delete</button>
               </div>
             </li>
+            {{/each}}
           </ul>
         </div>
 
