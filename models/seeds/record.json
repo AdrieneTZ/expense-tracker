@@ -1,0 +1,30 @@
+[
+  {
+    "name": "peanuts",
+    "date": "2022-6-22",
+    "amount": 777,
+    "user": "Elephant",
+    "category": "餐飲食品"
+  },
+  {
+    "name": "bananas",
+    "date": "2022-6-22",
+    "amount": 888,
+    "user": "Elephant",
+    "category": "餐飲食品"
+  },
+  {
+    "name": "ship",
+    "date": "2022-6-22",
+    "amount": 999999,
+    "user": "Shark",
+    "category": "交通出行"
+  },
+  {
+    "name": "bird watching",
+    "date": "2022-6-22",
+    "amount": 200,
+    "user": "Shark",
+    "category": "休閒娛樂"
+  }
+]

@@ -8,7 +8,8 @@
     "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "genCat": "node models/seeds/generateCategories.js",
-    "genUser": "node models/seeds/generateUsers.js"
+    "genUser": "node models/seeds/generateUsers.js",
+    "genRec": "node models/seeds/generateRecords.js"
   },
   "author": "",
   "license": "ISC",
