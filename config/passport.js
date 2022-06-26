@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
+const FacebookStrategy = require('passport-facebook')
 
 const User = require('../models/user')
 
@@ -26,9 +27,38 @@ module.exports = app => {
     }
   ))
 
+  // passport strategy: facebook
+  passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_ID,
+    clientSecret: process.env.FACEBOOK_SECRET,
+    callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+    profileFields: ['email', 'displayName']
+  },
+  function(accessToken, refreshToken, profile, done) {
+    const { name, email } = profile._json
+    User.findOne({ email })
+      .then(user => {
+        if (user) return done(null, user)
+        // create a set of random password to the user registering with Facebook account
+        // because password is a required property in the User model
+        // this random password still have to be hashed by bcrypt.js
+        const randomPassword = Math.random().toString(36).slice(-9)
+        bcrypt
+          .genSalt(10)
+          .then(salt => bcrypt.hash(randomPassword, salt))
+          .then(hash => User.create({
+            name,
+            email,
+            password: hash,
+          }))
+          .then(user => done(null, user))
+          .catch(error => done(error, false))
+      })
+  }))
+
   // serialize & deserialize
   passport.serializeUser((user, done) => {
-    console.log(user)
+    // console.log(user)
     done(null, user.id)
   })
   passport.deserializeUser((id, done) => {
