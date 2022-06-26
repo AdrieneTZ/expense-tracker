@@ -10,11 +10,11 @@ const Category = require('./category')
 
 // data
 const CATEGORIES = {
-  家居物業: "https://fontawesome.com/icons/home?style=solid",
-  交通出行: "https://fontawesome.com/icons/shuttle-van?style=solid",
-  休閒娛樂: "https://fontawesome.com/icons/grin-beam?style=solid",
-  餐飲食品: "https://fontawesome.com/icons/utensils?style=solid",
-  其他: "https://fontawesome.com/icons/pen?style=solid"
+  家居物業: "fa-home",
+  交通出行: "fa-shuttle-van",
+  休閒娛樂: "fa-grin-beam",
+  餐飲食品: "fa-utensils",
+  其他: "fa-pen"
 }
 
 const generateCategories = async (categories) => {

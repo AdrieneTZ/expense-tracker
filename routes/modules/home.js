@@ -27,7 +27,12 @@ router.get('/', async (req, res) => {
       try{
         const records = await Record.find({ userId, categoryId }).lean()
         categories.unshift({ _id: '', name: 'All'})
+
         for await (const record of records) {
+          // add property, icon, to each record
+          const { icon } = await Category.findById(record.categoryId).lean()
+          record.icon = icon
+
           totalAmount += record.amount
         }
 
@@ -40,9 +45,15 @@ router.get('/', async (req, res) => {
       // categoryId doesn't exists: get all records
       try {
         const records = await Record.find({ userId }).lean()
+
         for await (const record of records) {
+          // add property, icon, to each record
+          const { icon } = await Category.findById(record.categoryId).lean()
+          record.icon = icon
+
           totalAmount += record.amount
         }
+
         res.render('index', { selectedCategoryName, categories, totalAmount, records })
       } catch(error) {
         console.log('Fail to get all expense records', error)
