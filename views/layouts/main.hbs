@@ -12,22 +12,24 @@
     crossorigin="anonymous">
 </head>
 
-<body class='bg-light'>
+<body class="bg-light">
   <header>
-    <nav class="navbar bg-light">
+    <nav class="navbar" style="background-color: #f2c367; color: #5b7148;">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">Expense Tracker</a>
+        <a class="navbar-brand" href="/" style="color: #477dc8;">
+        {{#if isAuthenticated}}{{user.name}}'s {{/if}} Expense Tracker
+        </a>
         {{#if isAuthenticated}}
-        <a class='btn btn-outline-light' href='/users/logout'>Logout</a>
+        <a class="btn btn-outline-light" href="/users/logout" style="background-color: #274b47;">Logout</a>
         {{else}}
-        <a class='btn btn-outline-light' href='/users/login' style="background-color: #274b47;">Login</a>
+        <a class="btn btn-outline-light" href="/users/login" style="background-color: #274b47;">Login</a>
         {{/if}}
       </div>
     </nav>
   </header>
 
   <main>
-    <div class='container mt-3'>
+    <div class="container mt-3">
       {{{body}}}
     </div>
   </main>
