@@ -20,12 +20,18 @@ router.get('/', async (req, res) => {
     // get all categories data: [ {}, {}, ... ]
     const categories = await Category.find().lean()
 
+    let totalAmount = 0
+
     if (categoryId) {
       // categoryId exists: get records by selected category id
       try{
         const records = await Record.find({ userId, categoryId }).lean()
         categories.unshift({ _id: '', name: 'All'})
-        res.render('index', { selectedCategoryName, categories, records })
+        for await (const record of records) {
+          totalAmount += record.amount
+        }
+
+        res.render('index', { selectedCategoryName, categories, totalAmount, records })
       } catch(error) {
         console.log('Fail to get the expense records of your selected category', error)
         res.send(`<p4>Fail to get the expense records of your selected category</p4>`)
@@ -34,7 +40,10 @@ router.get('/', async (req, res) => {
       // categoryId doesn't exists: get all records
       try {
         const records = await Record.find({ userId }).lean()
-        res.render('index', { selectedCategoryName, categories, records })
+        for await (const record of records) {
+          totalAmount += record.amount
+        }
+        res.render('index', { selectedCategoryName, categories, totalAmount, records })
       } catch(error) {
         console.log('Fail to get all expense records', error)
         res.send(`<p4>yFail to get all expense records</p4>`)
