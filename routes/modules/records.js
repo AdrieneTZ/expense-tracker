@@ -64,4 +64,17 @@ router.put('/:id', async (req, res) => {
   }
 })
 
+// router: DELETE/ records/ :recordId
+router.delete('/:id', async (req, res) => {
+  try {
+    const _id = req.params.id
+
+    await Record.findByIdAndRemove(_id)
+
+    res.redirect('/')
+  } catch(error) {
+    console.log('Fail to delete this expense record', error)
+    res.send(`<p4>Fail to delete this expense record</p4>`)
+  }
+})
 module.exports = router

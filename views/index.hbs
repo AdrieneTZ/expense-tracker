@@ -39,7 +39,9 @@
               </div>
               <div class="buttons mx-1">
                 <a class="btn btn-primary" href="./records/{{this._id}}/edit">Edit</a>
-                <button class="btn btn-danger">Delete</button>
+                <form method="POST" action="./records/{{this._id}}?_method=DELETE" style="display: inline;">
+                  <button class="btn btn-danger" type="submit">Delete</button>
+                </form>
               </div>
             </li>
             {{/each}}
