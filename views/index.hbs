@@ -4,18 +4,14 @@
 
       {{!-- card header --}}
       <div class="card-header">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="expense-category" data-bs-toggle="dropdown" aria-expanded="false">
-            Expense Category
-          </button>
-          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="expense-category">
-            <li><a class="dropdown-item" href="#">家居物業</a></li>
-            <li><a class="dropdown-item" href="#">交通出行</a></li>
-            <li><a class="dropdown-item" href="#">休閒娛樂</a></li>
-            <li><a class="dropdown-item" href="#">餐飲食品</a></li>
-            <li><a class="dropdown-item" href="#">其他</a></li>
-          </ul>
-        </div>
+        <form action="/">
+          <select name="categoryId" id="category" onchange="form.submit()">
+            <option value="" readonly>{{selectedCategoryName}}</option>
+            {{#each categories}}
+            <option value="{{this._id}}">{{this.name}}</option>
+            {{/each}}
+          </select>
+        </form>
       </div>
       {{!-- card header end --}}
 
@@ -23,7 +19,7 @@
       <div class="card-body mt-3">
         <div class="total-expense d-flex row">
           <div>Total Amount：</div>
-          <p>10000</p>
+          <p>0</p>
         </div>
         <div class="expenses">
           <ul class="list-group d-flex row ">
